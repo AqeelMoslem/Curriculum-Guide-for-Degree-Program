@@ -51,3 +51,32 @@ Designed for universities or colleges, it supports:
 
 ## 📐 Architecture Overview
 
+┌─────────────┐    ┌──────────────┐    ┌─────────────┐
+│ Course      │    │ Program      │    │ Student     │
+│             │    │              │    │             │
+│ • name      │◄───│ • name       │◄───│ • name      │
+│ • credits   │    │ • courses[]  │    │ • email     │
+│ • prereqs[] │    │ • credits    │    │ • courses[] │
+│ • program   │    │ • students[] │    │ • gpa       │
+│ • students[]│    │              │    │ • program   │
+└─────────────┘    └──────────────┘    └─────────────┘
+
+---
+
+## 🛠️ Future Additions
+
+- Role-based access (Admin / Student)
+- Grade input and transcript generation
+- Export to PDF for academic reports
+- Mobile version or student portal
+
+---
+
+## 🚀 Want to Build It?
+
+You can extend this with:
+- SQL database schema
+- REST API endpoints
+- Frontend using React or Flutter
+
+Let us know how you'd like to start!
