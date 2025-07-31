@@ -1,1 +1,1 @@
-# -Curriculum-Guide-for-Degree-Program
+# 🎓 Curriculum Guide for Degree Program
