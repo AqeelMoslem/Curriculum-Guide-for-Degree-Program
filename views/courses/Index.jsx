@@ -1,34 +1,24 @@
 const React = require('react');
 
 function Index(props) {
-    const courses = props.courses;
-
-    return (
-        <html>
-            <head>
-                <title>Courses Index</title>
-                <link rel="stylesheet" href="/style.css" />
-            </head>
-            <body>
-                <div className="container">
-                    <h1>Courses</h1>
-                    <a className="create-link" href="/courses/new">+ Add New Course</a>
-                    <ul className="course-list">
-                        {courses.map(course => (
-                            <li className="course-item" key={course._id}>
-                                <a href={`/courses/${course._id}`}>{course.name}</a> - {course.credits} credits
-                                <form action={`/courses/${course._id}?_method=DELETE`} method="POST">
-                                    <button className="btn delete" type="submit">Delete</button>
-                                </form>
-                                <a href={`/courses/${course._id}/edit`}><button className="btn edit">Edit</button></a>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </body>
-        </html>
-    );
+  return (
+    <html>
+      <head>
+        <title>Courses</title>
+      </head>
+      <body>
+        <h1>Courses List</h1>
+        <ul>
+          {props.courses && props.courses.map(course => (
+            <li key={course._id}>
+              <strong>{course.name}</strong> - {course.credits} credits
+            </li>
+          ))}
+        </ul>
+        <a href="/dashboard">Back to Dashboard</a>
+      </body>
+    </html>
+  );
 }
 
 module.exports = Index;
-
