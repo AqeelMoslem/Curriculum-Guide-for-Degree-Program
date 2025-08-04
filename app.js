@@ -1,30 +1,30 @@
-const express = require('express');
-const morgan = require('morgan');
-const jsxEngine = require('jsx-view-engine');
-const methodOverride = require('method-override');
-const dotenv = require('dotenv');
-dotenv.config();
+const express = require('express')
+const morgan = require('morgan')
+const jsxEngine = require('jsx-view-engine')
+const methodOverride = require('method-override')
+const userRoutes = require('./controllers/auth/routeController')
+const fruitsRouter = require('./controllers/fruits/routeController')
+const apiRoutes = require('./routes/apiRoutes')
+const app = express()
 
-const courseRoutes = require('./routes/courseRoutes');
-const programRoutes = require('./routes/programRoutes');
-const studentRoutes = require('./routes/studentRoutes');
-const authRoutes = require('./routes/authRoutes');
+app.set('view engine', 'jsx')
+app.engine('jsx', jsxEngine())
 
-const app = express();
+app.use(express.json()) // this is new this for the api
+app.use(express.urlencoded({ extended: true })) // req.body
+app.use(methodOverride('_method')) // <====== add method override
+app.use((req, res, next) => {
+    res.locals.data = {}
+    next()
+})
+app.use(express.static('public'))
+app.use(morgan('dev'))
 
-app.set('view engine', 'jsx');
-app.engine('jsx', jsxEngine());
+// Web routes (for views)
+app.use('/users', userRoutes)
+app.use('/fruits', fruitsRouter)
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride('_method'));
-app.use(express.static('public'));
-app.use(morgan('dev'));
+// API routes (for JSON responses)
+app.use('/api', apiRoutes)
 
-// Routes for API and views
-app.use('/courses', courseRoutes);
-app.use('/programs', programRoutes);
-app.use('/students', studentRoutes);
-app.use('/', authRoutes);
-
-module.exports = app;
+module.exports = app
