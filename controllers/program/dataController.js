@@ -38,7 +38,7 @@ dataController.update = async (req, res, next) => {
   }
 };
 
-dataController.delete = async (req, res, next) => {
+dataController.destroy = async (req, res, next) => {
   try {
     res.locals.data.program = await Program.findByIdAndDelete(req.params.id);
     next();

@@ -1,10 +1,11 @@
 const React = require('react');
 
 function Index(props) {
+  console.log(props)
   return (
     <html>
       <head>
-        <title>Courses</title>
+        <title>Home Page</title>
       </head>
       <body>
         <h1>Courses List</h1>
@@ -15,7 +16,13 @@ function Index(props) {
             </li>
           ))}
         </ul>
-        <a href="/dashboard">Back to Dashboard</a>
+        <a href={`/programs/select?token=${props.token}`}>See program</a>
+        {props.program && (
+          <div style={{marginTop: '2em'}}>
+            <h2>Selected Program</h2>
+            <p>{typeof props.program === 'object' ? props.program.name : props.program}</p>
+          </div>
+        )}
       </body>
     </html>
   );

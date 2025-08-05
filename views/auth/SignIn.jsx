@@ -42,7 +42,7 @@ function SignIn (props) {
             </form>
             
             <div className="text-center mt-3">
-                <p>Don't have an account? <a href="/users/signup">Sign up here</a></p>
+                <p>Don't have an account? <a href="/user/SignUp">Sign up here</a></p>
             </div>
         </Layout>
     )

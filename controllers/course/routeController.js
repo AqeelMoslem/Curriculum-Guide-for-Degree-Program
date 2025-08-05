@@ -3,6 +3,7 @@ const router = express.Router();
 const dataController = require('./dataController');
 const viewController = require('./viewController');
 // const apiController = require('./apiController');
+const authController = require('../auth/dataController')
 
 // API Routes
 // router.get('/api', dataController.index, apiController.index);
@@ -12,7 +13,7 @@ const viewController = require('./viewController');
 // router.delete('/api/:id', dataController.delete, apiController.delete);
 
 // View Routes
-router.get('/', dataController.index, viewController.index);
+router.get('/', authController.auth, dataController.index, viewController.index);
 router.get('/:id', dataController.show, viewController.show);
 
 module.exports = router;

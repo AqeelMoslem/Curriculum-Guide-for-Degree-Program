@@ -53,7 +53,7 @@ function SignUp (props) {
             </form>
             
             <div className="text-center mt-3">
-                <p>Already have an account? <a href="/users/signin">Sign in here</a></p>
+                <p>Already have an account? <a href="/users/login">Sign in here</a></p>
             </div>
         </Layout>
     )

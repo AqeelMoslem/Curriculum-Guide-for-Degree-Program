@@ -1,11 +1,6 @@
 const RESOURCE_PATH = '/courses'
 const viewController = {
-  signUp(req, res, next){
-    res.render('/auth/SignUp')
-  },
-  signIn(req, res, next){
-    res.render('/auth/SignIn')
-  },
+
   index(req, res, next){
     res.render('courses/Index', res.locals.data)
   },
@@ -17,6 +12,10 @@ const viewController = {
   },
   newView(req, res, next){
     res.render('courses/New', res.locals.data)
+  },
+  newSelect(req, res, next){
+
+    res.render('programs/select', res.locals.data)
   },
   redirectHome(req, res, next){
     if(res.locals.data.token){

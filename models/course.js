@@ -5,8 +5,7 @@ const courseSchema = new mongoose.Schema({
   credits: { type: Number, required: true },
   description: String,
   prerequisites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
-  program: { type: mongoose.Schema.Types.ObjectId, ref: 'Program' },
-  students: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Student' }]
+  program: { type: mongoose.Schema.Types.ObjectId, ref: 'Program' }
 });
 
 module.exports = mongoose.model('Course', courseSchema);
