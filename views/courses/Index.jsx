@@ -28,13 +28,15 @@ function Index(props) {
 ) : (
   <p>No program or subject selected yet.</p>
 )}
-<a href={props.token ? `/programs/Edit?token=${props.token}` : '/programs/select'} className="btn btn-secondary">Change the Course</a>
-                       <form action={`/programs/${props.program}?_method=DELETE&token=${props.token}`} method="POST">
-                        <button type="submit" className="btn btn-danger">
-                            🗑️ Delete {props.program}
-                        </button>
-                    </form>
-   
+      <a href={props.token ? `/programs/Edit?token=${props.token}` : '/programs/select'} className="btn btn-secondary">Change the Course</a>
+      {/* Remove selected program/subject from user selection, not from DB */}
+      {props.program && (
+        <form action={`/programs/unselect?token=${props.token}`} method="POST" style={{ display: 'inline' }}>
+          <button type="submit" className="btn btn-danger">
+            🗑️ Remove Selection
+          </button>
+        </form>
+      )}
     </Layout>
   );
 }

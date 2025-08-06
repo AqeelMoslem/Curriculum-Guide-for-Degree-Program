@@ -1,3 +1,4 @@
+
 const express = require('express');
 const router = express.Router();
 const viewController = require('./viewController.js')
@@ -15,6 +16,18 @@ router.get('/', authDataController.auth
     viewController.index
     /* display the logged in users fruits and also the link to the new page with the token*/
 );
+// Unselect program (remove user's selection)
+router.post('/unselect', authDataController.auth, async (req, res) => {
+  // Remove program and subject from user
+  if (req.user) {
+    req.user.program = undefined;
+    // If you store selectedSubject, clear it as well
+    if ('selectedSubject' in req.user) req.user.selectedSubject = undefined;
+    await req.user.save();
+  }
+  const token = req.query.token || req.body.token || req.headers.authorization?.replace('Bearer ', '');
+  res.redirect(`/courses?token=${token}`);
+});
 // Handle program selection
 
 router.get('/select/:programCode', authDataController.auth, dataController.getCoursesByProgram, viewController.select);
