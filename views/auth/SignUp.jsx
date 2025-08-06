@@ -46,7 +46,7 @@ function SignUp (props) {
                     <button type="submit" className="btn btn-primary">
                         📝 Create Account
                     </button>
-                    <a href="/users/signin" className="btn btn-secondary">
+                    <a href="/users/login" className="btn btn-secondary">
                         🔐 Sign In Instead
                     </a>
                 </div>

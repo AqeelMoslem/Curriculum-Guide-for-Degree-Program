@@ -5,7 +5,6 @@ const methodOverride = require('method-override')
 const userRoutes = require('./controllers/auth/routeController')
 const coursesRouter = require('./controllers/course/routeController')
 const programsRouter = require('./controllers/program/routeContoller')
-const apiRoutes = require('./routes/apiRoutes')
 const app = express()
 
 app.set('view engine', 'jsx')

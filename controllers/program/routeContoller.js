@@ -3,7 +3,10 @@ const router = express.Router();
 const viewController = require('./viewController.js')
 const dataController = require('./dataController.js')
 const authDataController = require('../auth/dataController.js')
+const User = require('../../models/user');
+const Program = require('../../models/Program');
 // add routes
+
 // Index
 router.get('/', authDataController.auth
     /* check if the token exists in the header or the query, set req.user and res.locals.data.token */ , 
@@ -13,34 +16,25 @@ router.get('/', authDataController.auth
     /* display the logged in users fruits and also the link to the new page with the token*/
 );
 // Handle program selection
-router.post('/select', authDataController.auth, async (req, res, next) => {
-  // Save selected program to user
-  const User = require('../../models/user');
-  const Program = require('../../models/Program');
-  const user = req.user;
-  const programId = req.body.programId;
-  if (programId) {
-    user.program = programId;
-    await user.save();
-    // Optionally, fetch program details to show on home
-    const program = await Program.findById(programId);
-    res.locals.data.program = program;
-  }
-  // Redirect to home with token
-  res.redirect(`/courses?token=${res.locals.data.token}`);
-});
+
+router.get('/select/:programCode', authDataController.auth, dataController.getCoursesByProgram, viewController.select);
+
+router.post('/select', authDataController.auth, dataController.select, viewController.redirectShow);
 // New
 router.get('/new', authDataController.auth, viewController.newView );
-// Delete
-router.delete('/:id',authDataController.auth, dataController.destroy, viewController.redirectHome);
- router.get('/select', authDataController.auth, viewController.newSelect)
-// Update
-router.put('/:id',authDataController.auth, dataController.update, viewController.redirectShow);
-// Create
-router.post('/', authDataController.auth, dataController.create, viewController.redirectHome);
-// Edit
-router.get('/:id/edit', authDataController.auth, dataController.show, viewController.edit);
-// Show
-router.get('/:id', authDataController.auth, dataController.show, viewController.show);
+router.get('/select', authDataController.auth, viewController.newSelect)
+// 
+// POST route to handle subject selection for SE program
+router.post('/select/se', authDataController.auth, dataController.selectSE, viewController.redirectShow);
+// // Delete
+// router.delete('/:id',authDataController.auth, dataController.destroy, viewController.redirectHome);
+ 
+// // Update
+// router.put('/:id',authDataController.auth, dataController.update, viewController.redirectShow);
+// // Create
+// router.post('/', authDataController.auth, dataController.create, viewController.redirectHome);
+// // Show
+// router.get('/:id', authDataController.auth, dataController.show, viewController.show);
 // export router
+
 module.exports = router;

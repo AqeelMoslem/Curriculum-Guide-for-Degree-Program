@@ -2,6 +2,17 @@ const Course = require('../../models/Course');
 
 const dataController = {};
 
+dataController.getCoursesByProgram = async (req, res, next) => {
+  try {
+    const programCode = req.params.programCode;
+    res.locals.data.courses = await Course.find({ programCode }); // أو حسب الحقل عندك
+    next();
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+
 dataController.index = async (req, res, next) => {
   try {
     res.locals.data.courses = await Course.find({});

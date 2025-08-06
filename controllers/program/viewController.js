@@ -1,9 +1,18 @@
-const RESOURCE_PATH = '/courses'
+const RESOURCE_PATH = '/programs'
 const viewController = {
 
-  index(req, res, next){
-    res.render('courses/Index', res.locals.data)
-  },
+index  (req, res){
+  const selectedProgram = req.query.program || (req.user && req.user.program);
+  const selectedSubject = req.query.selectedSubject;
+
+  res.render('courses/Index', {
+    courses: res.locals.data.courses,
+    token: req.query.token || res.locals.data.token,
+    program: selectedProgram,
+    selectedSubject: selectedSubject
+  });
+},
+
   show(req, res, next){
     res.render('courses/Show', res.locals.data)
   },
@@ -14,7 +23,6 @@ const viewController = {
     res.render('courses/New', res.locals.data)
   },
   newSelect(req, res, next){
-
     res.render('programs/select', res.locals.data)
   },
   redirectHome(req, res, next){
@@ -32,5 +40,14 @@ const viewController = {
     } 
   }
 }
+
+    viewController.select = (req, res) => {
+  res.render('courses/Select', {
+    courses: res.locals.data.courses,
+    token: res.locals.data.token,
+    programCode: req.params.programCode,
+  });
+};
+
 
 module.exports = viewController

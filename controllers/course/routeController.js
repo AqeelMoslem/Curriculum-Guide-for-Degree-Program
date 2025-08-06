@@ -2,18 +2,14 @@ const express = require('express');
 const router = express.Router();
 const dataController = require('./dataController');
 const viewController = require('./viewController');
-// const apiController = require('./apiController');
-const authController = require('../auth/dataController')
+const authController = require('../auth/dataController');
 
-// API Routes
-// router.get('/api', dataController.index, apiController.index);
-// router.get('/api/:id', dataController.show, apiController.show);
-// router.post('/api', dataController.create, apiController.create);
-// router.put('/api/:id', dataController.update, apiController.update);
-// router.delete('/api/:id', dataController.delete, apiController.delete);
-
-// View Routes
+// ✅ Add this line to fix the error
 router.get('/', authController.auth, dataController.index, viewController.index);
-router.get('/:id', dataController.show, viewController.show);
+
+router.get('/select/:programCode', authController.auth, dataController.getCoursesByProgram, viewController.select);
+router.get('/new', authController.auth, viewController.new);
+router.get('/course/:id', authController.auth, dataController.show, viewController.show);
+router.post('/', authController.auth, dataController.create, viewController.redirectHome);
 
 module.exports = router;
