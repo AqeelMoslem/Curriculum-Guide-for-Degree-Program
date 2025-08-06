@@ -15,7 +15,7 @@ function Index(props) {
       <h1>🎓 Select a Program</h1>
       
             <a href={`/programs/select/${programs.code}?token=${props.token}`}>
-              SE
+              SoftWare Engineering
             </a>
      
 
@@ -28,6 +28,13 @@ function Index(props) {
 ) : (
   <p>No program or subject selected yet.</p>
 )}
+<a href={props.token ? `/programs/Edit?token=${props.token}` : '/programs/select'} className="btn btn-secondary">Change the Course</a>
+                       <form action={`/programs/${props.program}?_method=DELETE&token=${props.token}`} method="POST">
+                        <button type="submit" className="btn btn-danger">
+                            🗑️ Delete {props.program}
+                        </button>
+                    </form>
+   
     </Layout>
   );
 }

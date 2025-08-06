@@ -23,11 +23,11 @@ router.post('/select', authDataController.auth, dataController.select, viewContr
 // New
 router.get('/new', authDataController.auth, viewController.newView );
 router.get('/select', authDataController.auth, viewController.newSelect)
-// 
+router.get('/edit', authDataController.auth, dataController.update, viewController.edit);
 // POST route to handle subject selection for SE program
 router.post('/select/se', authDataController.auth, dataController.selectSE, viewController.redirectShow);
 // // Delete
-// router.delete('/:id',authDataController.auth, dataController.destroy, viewController.redirectHome);
+router.delete('/:id',authDataController.auth, dataController.destroy, viewController.redirectHome);
  
 // // Update
 // router.put('/:id',authDataController.auth, dataController.update, viewController.redirectShow);

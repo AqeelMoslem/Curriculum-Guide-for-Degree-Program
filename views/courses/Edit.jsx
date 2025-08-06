@@ -1,8 +1,7 @@
 const React = require('react');
 const Layout = require('../layouts/Layout');
-
-function Select(props) {
-  const token = props.token;
+function Edit(props) {
+    const token = props.token;
 
   // Subjects list for Software Engineering
   const subjects = [
@@ -12,11 +11,11 @@ function Select(props) {
     { id: 'python_django', name: 'PYTHON.PY / DJANGO' }
   ];
 
-  return (
-    <Layout>
-      <h1>Select One Subject for Software Engineering</h1>
-
-      <form action={`/programs/select/se?token=${token}`} method="POST">
+    return (
+        <Layout token={props.token}>
+            <div className="container">
+                <h1>C New Course</h1>
+             <form action={`/programs/select/se?token=${token}`} method="POST">
         {subjects.map(subject => (
           <div key={subject.id}>
             <input
@@ -29,11 +28,14 @@ function Select(props) {
             <label htmlFor={subject.id}>{subject.name}</label>
           </div>
         ))}
+        
         <button type="submit">Submit</button>
       </form>
+                {/* <a href={`/programs?token=${props.token}`}>⬅️ Back to Programs</a> */}
+            </div>
 
-    </Layout>
-  );
+        </Layout>
+    );
 }
 
-module.exports = Select;
+module.exports = Edit;
