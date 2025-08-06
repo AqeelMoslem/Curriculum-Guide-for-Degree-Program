@@ -39,6 +39,10 @@ router.get('/select', authDataController.auth, viewController.newSelect)
 router.get('/edit', authDataController.auth, dataController.update, viewController.edit);
 // POST route to handle subject selection for SE program
 router.post('/select/se', authDataController.auth, dataController.selectSE, viewController.redirectShow);
+// POST route to handle subject selection for CE program
+router.post('/select/ce', authDataController.auth, dataController.selectSE, viewController.redirectShow);
+// POST route to handle subject selection for IS program
+router.post('/select/is', authDataController.auth, dataController.selectSE, viewController.redirectShow);
 // // Delete
 router.delete('/:id',authDataController.auth, dataController.destroy, viewController.redirectHome);
  

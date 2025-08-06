@@ -13,21 +13,23 @@ function Index(props) {
   return (
     <Layout>
       <h1>🎓 Select a Program</h1>
-      
-            <a href={`/programs/select/${programs.code}?token=${props.token}`}>
-              Software Engineering
-            </a>
-     
+      <ul>
+        {programs.map((program) => (
+          <li key={program.code}>
+            <a href={`/programs/select/${program.code}?token=${props.token}`}>{program.name}</a>
+          </li>
+        ))}
+      </ul>
 
-    <h2>🎓 Selected Program & Subject</h2>
-{props.program && props.selectedSubject ? (
-  <p>
-    <strong>Program:</strong> {props.program}<br />
-    <strong>Subject:</strong> {props.selectedSubject}
-  </p>
-) : (
-  <p>No program or subject selected yet.</p>
-)}
+      <h2>🎓 Selected Program & Subject</h2>
+      {props.program && props.selectedSubject ? (
+        <p>
+          <strong>Program:</strong> {props.program}<br />
+          <strong>Subject:</strong> {props.selectedSubject}
+        </p>
+      ) : (
+        <p>No program or subject selected yet.</p>
+      )}
       <a href={props.token ? `/programs/Edit?token=${props.token}` : '/programs/select'} className="btn btn-secondary">Change the Course</a>
       {/* Remove selected program/subject from user selection, not from DB */}
       {props.program && (
