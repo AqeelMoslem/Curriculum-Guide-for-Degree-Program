@@ -15,7 +15,7 @@ function Index(props) {
       <h1>🎓 Select a Program</h1>
       
             <a href={`/programs/select/${programs.code}?token=${props.token}`}>
-              SoftWare Engineering
+              Software Engineering
             </a>
      
 
