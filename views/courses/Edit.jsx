@@ -14,7 +14,7 @@ function Edit(props) {
     return (
         <Layout token={props.token}>
             <div className="container">
-                <h1>C New Course</h1>
+                <h1>Choose New Course</h1>
              <form action={`/programs/select/se?token=${token}`} method="POST">
         {subjects.map(subject => (
           <div key={subject.id}>
@@ -31,7 +31,7 @@ function Edit(props) {
         
         <button type="submit">Submit</button>
       </form>
-                {/* <a href={`/programs?token=${props.token}`}>⬅️ Back to Programs</a> */}
+                
             </div>
 
         </Layout>

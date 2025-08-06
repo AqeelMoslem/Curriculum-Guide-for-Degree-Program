@@ -21,7 +21,6 @@ function Select(props) {
       { id: 'digital_logic', name: 'DIGITAL LOGIC DESIGN' },
       { id: 'microprocessors', name: 'MICROPROCESSORS & MICROCONTROLLERS' },
       { id: 'computer_architecture', name: 'COMPUTER ARCHITECTURE' },
-      { id: 'operating_systems', name: 'OPERATING SYSTEMS' },
       { id: 'embedded_systems', name: 'EMBEDDED SYSTEMS' }
     ];
     title = 'Computer Engineering';
@@ -29,7 +28,6 @@ function Select(props) {
   } else if (programCode === '3') {
     subjects = [
       { id: 'database_systems', name: 'DATABASE SYSTEMS' },
-      { id: 'information_security', name: 'INFORMATION SECURITY' },
       { id: 'system_analysis', name: 'SYSTEM ANALYSIS & DESIGN' },
       { id: 'enterprise_systems', name: 'ENTERPRISE INFORMATION SYSTEMS' },
       { id: 'it_project_mgmt', name: 'IT PROJECT MANAGEMENT' }

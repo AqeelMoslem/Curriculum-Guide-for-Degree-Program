@@ -95,4 +95,19 @@ dataController.selectSE =(req, res) => {
   res.redirect(`/courses?token=${token}&program=Software%20Engineering&selectedSubject=${encodeURIComponent(selectedSubject)}`);
 };
 
+dataController.selectCE =(req, res) => {
+  const selectedSubject = req.body.selectedSubject;
+  const token = req.query.token;
+
+  // Redirect to /courses with selected data
+  res.redirect(`/courses?token=${token}&program=Computer%20Engineering&selectedSubject=${encodeURIComponent(selectedSubject)}`);
+};
+
+dataController.selectIS =(req, res) => {
+  const selectedSubject = req.body.selectedSubject;
+  const token = req.query.token;
+
+  // Redirect to /courses with selected data
+  res.redirect(`/courses?token=${token}&program=Information%20System&selectedSubject=${encodeURIComponent(selectedSubject)}`);
+};
 module.exports = dataController;
