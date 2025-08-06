@@ -12,15 +12,30 @@ This app allows you to:
 
 ## Models
 
+
 ### Course
 - `name`: Course name
 - `description`: Short description
-- `prereqs`: Prerequisites
 - `program`: Linked program
+
 
 ### Program
 - `name`: Program name
 - `courses`: All courses in the program
+
+---
+
+
+## Model Diagram
+
+```
+┌─────────────┐     ┌─────────────┐
+│   Course    │◄────│   Program   │
+│  name       │     │  name       │
+│  desc       │     │  courses[]  │
+│  program    │     └─────────────┘
+└─────────────┘
+```
 
 ---
 
@@ -43,7 +58,7 @@ This app allows you to:
 ## 🚧 Future Work
 
 - Student model and authentication
-- Prerequisite checks for enrollment
+- Prerequisites for courses
 - Degree requirement tracking
 - Progress monitoring and GPA calculation
 - Grade input and transcript generation
