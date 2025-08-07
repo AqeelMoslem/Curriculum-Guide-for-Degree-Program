@@ -17,7 +17,9 @@ index  (req, res){
     res.render('courses/Show', res.locals.data)
   },
   edit(req, res, next){
-    res.render('courses/Edit', res.locals.data)
+   const { token, programCode } = req.query;
+res.render('courses/Edit', { token, programCode });
+
   },
   newView(req, res, next){
     res.render('courses/New', res.locals.data)

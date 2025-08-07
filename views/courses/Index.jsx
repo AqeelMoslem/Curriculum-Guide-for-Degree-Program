@@ -8,8 +8,14 @@ function Index(props) {
     { code: '3', name: 'Information Systems' }
   ];
 
-  const selectedCourses = props.selectedCourses || [];
+    const programNameToCode = {
+    'Software Engineering': '1',
+    'Computer Engineering': '2',
+    'Information Systems': '3',
+  };
 
+  const selectedCourses = props.selectedCourses || [];
+const programCode = programNameToCode[props.program];
   return (
     <Layout>
       <h1>🎓 Select a Program</h1>
@@ -30,7 +36,16 @@ function Index(props) {
       ) : (
         <p>No program or subject selected yet.</p>
       )}
-      <a href={props.token ? `/programs/Edit?token=${props.token}` : '/programs/select'} className="btn btn-secondary">Change the Course</a>
+      <a
+  href={
+    props.token && programCode
+      ? `/programs/edit?token=${props.token}&programCode=${programCode}`
+      : '/programs/select'
+  }
+  className="btn btn-secondary"
+>
+  Change the Course
+</a>
       {/* Remove selected program/subject from user selection, not from DB */}
       {props.program && (
         <form action={`/programs/unselect?token=${props.token}`} method="POST" style={{ display: 'inline' }}>
