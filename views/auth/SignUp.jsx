@@ -6,7 +6,6 @@ function SignUp (props) {
         <Layout>
             <h1>📝 Sign Up</h1>
             
-            <h2 className="text-center mb-3">Join The Greatest Of All Time!</h2>
             
             <form action="/users" method="POST">
                 <div className="form-group">
@@ -46,9 +45,9 @@ function SignUp (props) {
                     <button type="submit" className="btn btn-primary">
                         📝 Create Account
                     </button>
-                    <a href="/users/login" className="btn btn-secondary">
+                    {/* <a href="/users/login" className="btn btn-secondary">
                         🔐 Sign In Instead
-                    </a>
+                    </a> */}
                 </div>
             </form>
             
